@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Уголок потребителя — ООО «ОМПК»</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>📋</text></svg>">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Times New Roman', Georgia, serif;
+    background: #ffffff;
+    color: #000000;
+    line-height: 1.55;
+    font-size: 16px;
+    padding: 30px 15px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  header {
+    text-align: center;
+    border-bottom: 3px double #000;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+  }
+  header .org {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  header .sub {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 14px;
+  }
+  header h1 {
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  header .title-sub {
+    font-size: 15px;
+    font-style: italic;
+  }
+
+  .info-box {
+    border: 1px solid #000;
+    padding: 16px 20px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    background: #fafafa;
+  }
+  .info-box p { margin-bottom: 5px; }
+  .info-box p:last-child { margin-bottom: 0; }
+
+  .hint {
+    text-align: center;
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 18px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+
+  details.doc {
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    background: #fff;
+  }
+  details.doc > summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    cursor: pointer;
+    background: #f4f4f4;
+    font-size: 17px;
+    font-weight: bold;
+    list-style: none;
+    transition: background 0.15s;
+  }
+  details.doc > summary::-webkit-details-marker { display: none; }
+  details.doc > summary::after {
+    content: "▼";
+    margin-left: auto;
+    font-size: 13px;
+    transition: transform 0.25s;
+  }
+  details.doc[open] > summary::after { transform: rotate(180deg); }
+  details.doc > summary:hover { background: #e8e8e8; }
+  details.doc[open] > summary { background: #e0e0e0; }
+
+  .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    height: 30px;
+    background: #000;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .doc-body {
+    padding: 22px 26px;
+    border-top: 1px solid #000;
+    font-size: 15px;
+    line-height: 1.65;
+    background: #fff;
+  }
+  .doc-body h2 {
+    font-size: 18px;
+    margin: 20px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #999;
+  }
+  .doc-body h2:first-child { margin-top: 0; }
+  .doc-body h3 { font-size: 16px; margin: 14px 0 8px; }
+  .doc-body p { margin-bottom: 10px; text-align: justify; }
+  .doc-body ul, .doc-body ol { margin: 8px 0 12px 28px; }
+  .doc-body li { margin-bottom: 5px; }
+
+  .doc-scan {
+    text-align: center;
+    margin: 15px 0;
+  }
+  .doc-scan img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .doc-scan .caption {
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  .iframe-wrap {
+    border: 1px solid #999;
+    background: #fff;
+    margin-top: 10px;
+  }
+  .iframe-wrap iframe {
+    width: 100%;
+    height: 75vh;
+    border: 0;
+    display: block;
+  }
+
+  .honest-mark {
+    text-align: center;
+    padding: 15px;
+    background: #fffbe6;
+    border: 2px solid #d4a017;
+    border-radius: 8px;
+    margin: 15px 0;
+  }
+  .honest-mark h3 {
+    color: #7a5b00;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  footer {
+    margin-top: 35px;
+    padding-top: 15px;
+    border-top: 3px double #000;
+    text-align: center;
+    font-size: 13px;
+    color: #333;
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: 15px; padding: 15px 10px; }
+    header h1 { font-size: 20px; }
+    header .org { font-size: 14px; }
+    details.doc > summary { font-size: 15px; padding: 12px 14px; }
+    .doc-body { padding: 15px 14px; font-size: 14px; }
+    .doc-body h2 { font-size: 16px; }
+    .iframe-wrap iframe { height: 60vh; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="org">Общество с ограниченной ответственностью</div>
+    <div class="org">«Оренбургская мясоперерабатывающая компания»</div>
+    <div class="sub">ОГРН 1155658029746 · ИНН/КПП 5609178783 / 560901001</div>
+    <h1>Уголок потребителя</h1>
+    <div class="title-sub">Информация для потребителей и работников организации</div>
+  </header>
+
+  <div class="info-box">
+    <p><strong>Полное наименование:</strong> Общество с ограниченной ответственностью «Оренбургская мясоперерабатывающая компания»</p>
+    <p><strong>Сокращённое наименование:</strong> ООО «ОМПК»</p>
+    <p><strong>Юридический адрес:</strong> 460019, Оренбургская область, г. Оренбург, Шарлыкское шоссе, д. 30/3, стр. 1</p>
+    <p><strong>Фактический адрес:</strong> 460019, Оренбургская область, г. Оренбург, Шарлыкское шоссе, д. 30/3, стр. 1</p>
+    <p><strong>Режим работы:</strong> Пн–Пт 8:00–17:00, Сб 8:00–11:00, Вс — выходной</p>
+    <p><strong>Приём претензий:</strong> Паршина Юлия Наильевна, тел. +7 (3532) 911-879, e-mail: orenmpk.bux@gmail.com</p>
+  </div>
+
+  <div class="hint">
+    Нажмите на название документа, чтобы раскрыть его и прочитать прямо на сайте.
+  </div>
+
+  <!-- 1. АДРЕСА -->
+  <details class="doc">
+    <summary><span class="num">1</span> Адреса и реквизиты организации</summary>
+    <div class="doc-body">
+      <h2 style="text-align:center;">ООО «Оренбургская мясоперерабатывающая компания»</h2>
+      <p><strong>Полное наименование:</strong> Общество с ограниченной ответственностью «Оренбургская мясоперерабатывающая компания»</p>
+      <p><strong>Сокращённое наименование:</strong> ООО «ОМПК»</p>
+      <p><strong>ОГРН:</strong> 1155658029746 от 17.11.2015</p>
+      <p><strong>ИНН:</strong> 5609178783</p>
+      <p><strong>КПП:</strong> 560901001</p>
+      <p><strong>Юридический адрес:</strong> 460019, Оренбургская область, г. Оренбург, Шарлыкское шоссе, д. 30/3, стр. 1</p>
+      <p><strong>Фактический адрес:</strong> 460019, Оренбургская область, г. Оренбург, Шарлыкское шоссе, д. 30/3, стр. 1</p>
+      <p><strong>Руководитель:</strong> Директор Баловнева Лидия Николаевна</p>
+      <p><strong>Уставный капитал:</strong> 10 000 руб.</p>
+
+      <h3>РЕЖИМ РАБОТЫ</h3>
+      <p>Понедельник — 8:00–17:00<br>
+      Вторник — 8:00–17:00<br>
+      Среда — 8:00–17:00<br>
+      Четверг — 8:00–17:00<br>
+      Пятница — 8:00–17:00<br>
+      Суббота — 8:00–11:00<br>
+      Воскресенье — выходной</p>
+
+      <h3>ОСНОВНЫЕ ВИДЫ ДЕЯТЕЛЬНОСТИ (ОКВЭД)</h3>
+      <ul>
+        <li>10.13 — Производство продукции из мяса убойных животных и мяса птицы (основной)</li>
+        <li>10.72.1 — Производство хрустящих хлебцев, сухарей и прочих сухарных хлебобулочных изделий</li>
+        <li>10.72.4 — Производство замороженных хлебобулочных полуфабрикатов</li>
+        <li>10.73.1 — Производство макаронных изделий</li>
+        <li>46.31 — Торговля оптовая фруктами и овощами</li>
+        <li>46.31.11 — Торговля оптовая свежим картофелем</li>
+        <li>46.32 — Торговля оптовая мясом и мясными продуктами</li>
+        <li>46.32.3 — Торговля оптовая консервами из мяса и мяса птицы</li>
+        <li>46.33 — Торговля оптовая молочными продуктами, яйцами и пищевыми маслами и жирами</li>
+        <li>46.38 — Торговля оптовая прочими пищевыми продуктами, включая рыбу, ракообразных и моллюсков</li>
+        <li>47.11 — Торговля розничная преимущественно пищевыми продуктами, включая напитки, и табачными изделиями в неспециализированных магазинах</li>
+        <li>47.21 — Торговля розничная фруктами и овощами в специализированных магазинах</li>
+        <li>47.22 — Торговля розничная мясом и мясными продуктами в специализированных магазинах</li>
+        <li>47.23 — Торговля розничная рыбой, ракообразными и моллюсками в специализированных магазинах</li>
+        <li>47.24 — Торговля розничная хлебом и хлебобулочными изделиями и кондитерскими изделиями в специализированных магазинах</li>
+        <li>47.29 — Торговля розничная прочими пищевыми продуктами в специализированных магазинах</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- 2. КОНТРОЛИРУЮЩИЕ ОРГАНЫ -->
+  <details class="doc">
+    <summary><span class="num">2</span> Контролирующие органы</summary>
+    <div class="doc-body">
+      <h2>КОНТРОЛИРУЮЩИЕ ОРГАНЫ</h2>
+
+      <h3>Управление Федеральной службы по надзору в сфере защиты прав потребителей и благополучия человека по Оренбургской области</h3>
+      <p>Адрес: 460021, г. Оренбург, ул. 60 лет Октября, 2/1<br>
+      Телефон приёмной: +7 (3532) 33-37-98<br>
+      Горячая линия: +7 (3532) 44-23-54</p>
+
+      <h3>Отдел полиции № 3 МУ МВД России «Оренбургское»</h3>
+      <p>Адрес: Брестская улица, 3/1, Дзержинский район, Оренбург, 460047<br>
+      Телефон приёмной: +7 (3532) 79-67-66</p>
+
+      <h3>Участковый пункт полиции № 27</h3>
+      <p>Адрес: Оренбург, улица Гражданская, 1<br>
+      Телефон: +7 (3532) 34-85-84</p>
+
+      <h3>Департамент пожарной безопасности и гражданской защиты Оренбургской области</h3>
+      <p>Телефон приёмной: +7 (3532) 78-03-04</p>
+
+      <h3>Управление надзорной деятельности и профилактической работы</h3>
+      <p>Адрес: г. Оренбург, ул. Луговая, 78А<br>
+      Телефон: +7 (3532) 499-211</p>
+    </div>
+  </details>
+
+  <!-- 3. ОТВЕТ / ПРИЁМ ПРЕТЕНЗИЙ -->
+  <details class="doc">
+    <summary><span class="num">3</span> Приём претензий (ответственное лицо)</summary>
+    <div class="doc-body">
+      <h2>ПРИЁМ ПРЕТЕНЗИЙ</h2>
+      <p><strong>Ответственное лицо:</strong> Паршина Юлия Наильевна</p>
+      <p><strong>Телефон:</strong> +7 (3532) 911-879</p>
+      <p><strong>Электронная почта:</strong> orenmpk.bux@gmail.com</p>
+      <p>Претензии принимаются в письменной форме по адресу: 460019, Оренбургская область, г. Оренбург, Шарлыкское шоссе, д. 30/3, стр. 1, либо по указанным выше телефону и электронной почте.</p>
+      <p>Срок рассмотрения претензий — в соответствии с Законом Российской Федерации от 07.02.1992 № 2300-1 «О защите прав потребителей».</p>
+    </div>
+  </details>
+
+  <!-- 4. ВЫПИСКА ЕГРЮЛ -->
+  <details class="doc">
+    <summary><span class="num">4</span> Выписка из ЕГРЮЛ</summary>
+    <div class="doc-body">
+      <h2 style="text-align:center;">ВЫПИСКА ИЗ ЕГРЮЛ</h2>
+      <p>Выписка из Единого государственного реестра юридических лиц в отношении:</p>
+      <p style="margin-left:20px;"><strong>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «ОРЕНБУРГСКАЯ МЯСОПЕРЕРАБАТЫВАЮЩАЯ КОМПАНИЯ»</strong></p>
+
+      <h3>Основные сведения:</h3>
+      <ul>
+        <li><strong>ОГРН:</strong> 1155658029746 от 17.11.2015</li>
+        <li><strong>ИНН:</strong> 5609178783</li>
+        <li><strong>КПП:</strong> 560901001</li>
+        <li><strong>Полное наименование:</strong> Общество с ограниченной ответственностью «Оренбургская мясоперерабатывающая компания»</li>
+        <li><strong>Сокращённое наименование:</strong> ООО «ОМПК»</li>
+        <li><strong>Адрес:</strong> 460019, Оренбургская область, г. Оренбург, Шарлыкское шоссе, д. 30/3, стр. 1</li>
+        <li><strong>Способ образования:</strong> Создание юридического лица</li>
+        <li><strong>Дата регистрации:</strong> 17.11.2015</li>
+        <li><strong>Регистрирующий орган:</strong> Межрайонная инспекция Федеральной налоговой службы № 10 по Оренбургской области</li>
+      </ul>
+
+      <h3>Сведения о руководителе:</h3>
+      <ul>
+        <li><strong>ФИО:</strong> Баловнева Лидия Николаевна</li>
+        <li><strong>ИНН:</strong> 560900183944</li>
+        <li><strong>Должность:</strong> Директор</li>
+      </ul>
+
+      <h3>Сведения об уставном капитале:</h3>
+      <ul>
+        <li><strong>Вид:</strong> Уставный капитал</li>
+        <li><strong>Размер:</strong> 10 000 руб.</li>
+      </ul>
+
+      <h3>Сведения об учредителях:</h3>
+      <ul>
+        <li><strong>ФИО:</strong> Баловнева Лидия Николаевна</li>
+        <li><strong>ИНН:</strong> 560900183944</li>
+        <li><strong>Номинальная стоимость доли:</strong> 10 000 руб.</li>
+        <li><strong>Размер доли:</strong> 100%</li>
+      </ul>
+
+      <h3>Основной вид деятельности:</h3>
+      <p>10.13 — Производство продукции из мяса убойных животных и мяса птицы</p>
+
+      <h3>Дополнительные виды деятельности:</h3>
+      <ul>
+        <li>10.72.1 — Производство хрустящих хлебцев, сухарей и прочих сухарных хлебобулочных изделий</li>
+        <li>10.72.4 — Производство замороженных хлебобулочных полуфабрикатов</li>
+        <li>10.73.1 — Производство макаронных изделий</li>
+        <li>46.31 — Торговля оптовая фруктами и овощами</li>
+        <li>46.31.11 — Торговля оптовая свежим картофелем</li>
+        <li>46.32 — Торговля оптовая мясом и мясными продуктами</li>
+        <li>46.32.3 — Торговля оптовая консервами из мяса и мяса птицы</li>
+        <li>46.33 — Торговля оптовая молочными продуктами, яйцами и пищевыми маслами и жирами</li>
+        <li>46.38 — Торговля оптовая прочими пищевыми продуктами, включая рыбу, ракообразных и моллюсков</li>
+        <li>47.11 — Торговля розничная преимущественно пищевыми продуктами, включая напитки, и табачными изделиями в неспециализированных магазинах</li>
+        <li>47.21 — Торговля розничная фруктами и овощами в специализированных магазинах</li>
+        <li>47.22 — Торговля розничная мясом и мясными продуктами в специализированных магазинах</li>
+        <li>47.23 — Торговля розничная рыбой, ракообразными и моллюсками в специализированных магазинах</li>
+        <li>47.24 — Торговля розничная хлебом и хлебобулочными изделиями и кондитерскими изделиями в специализированных магазинах</li>
+        <li>47.29 — Торговля розничная прочими пищевыми продуктами в специализированных магазинах</li>
+      </ul>
+
+      <p class="italic" style="font-size:13px; margin-top:20px;">Выписка сформирована на сайте ФНС России по адресу https://egrul.nalog.ru</p>
+    </div>
+  </details>
+
+  <!-- 5. СВИДЕТЕЛЬСТВО ОГРН -->
+  <details class="doc">
+    <summary><span class="num">5</span> Свидетельство о государственной регистрации (ОГРН)</summary>
+    <div class="doc-body">
+      <h2 style="text-align:center;">ФЕДЕРАЛЬНАЯ НАЛОГОВАЯ СЛУЖБА</h2>
+      <h3 style="text-align:center;">СВИДЕТЕЛЬСТВО</h3>
+      <p style="text-align:center; font-weight:bold;">о государственной регистрации юридического лица</p>
+      <p style="text-align:center;">Форма № 51003</p>
+
+      <p>В Единый государственный реестр юридических лиц в отношении юридического лица:</p>
+      <p style="margin-left:20px;"><strong>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «ОРЕНБУРГСКАЯ МЯСОПЕРЕРАБАТЫВАЮЩАЯ КОМПАНИЯ»</strong></p>
+      <p>внесена запись о создании юридического лица <strong>«17» ноября 2015 года</strong></p>
+      <p>за основным государственным регистрационным номером (ОГРН):</p>
+      <p style="text-align:center; font-size:20px; letter-spacing:2px; font-weight:bold;">1 1 5 5 6 5 8 0 2 9 7 4 6</p>
+
+      <p>Запись содержит сведения, приведённые в прилагаемом к настоящему свидетельству листе записи Единого государственного реестра юридических лиц.</p>
+      <p><strong>Регистрирующий орган:</strong> Межрайонная инспекция Федеральной налоговой службы № 10 по Оренбургской области</p>
+      <p><strong>Заместитель начальника:</strong> Серебрякова Елена Петровна</p>
+      <p><strong>Дата выдачи:</strong> 17 ноября 2015 года</p>
+      <p style="text-align:right;"><strong>Серия 56 № 003555440</strong></p>
+
+      <h3>Свидетельство о постановке на учёт в налоговом органе (ИНН):</h3>
+      <p>Настоящее свидетельство подтверждает, что российская организация:</p>
+      <p style="margin-left:20px;"><strong>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «ОРЕНБУРГСКАЯ МЯСОПЕРЕРАБАТЫВАЮЩАЯ КОМПАНИЯ»</strong></p>
+      <p>ОГРН <strong>1 1 5 5 6 5 8 0 2 9 7 4 6</strong></p>
+      <p>поставлена на учёт в соответствии с Налоговым кодексом Российской Федерации <strong>17.11.2015</strong></p>
+      <p>в налоговом органе по месту нахождения: <strong>Инспекция Федеральной налоговой службы по Дзержинскому району г. Оренбурга</strong> (код 5609)</p>
+      <p>и ей присвоен ИНН/КПП:</p>
+      <p style="text-align:center; font-size:20px; letter-spacing:2px; font-weight:bold;">5 6 0 9 1 7 8 7 8 3 / 5 6 0 9 0 1 0 0 1</p>
+      <p style="text-align:right;"><strong>Серия 56 № 003555441</strong></p>
+    </div>
+  </details>
+
+  <!-- 6. ЧЕСТНЫЙ ЗНАК -->
+  <details class="doc">
+    <summary><span class="num">6</span> Памятка «Честный знак» — как проверить товар</summary>
+    <div class="doc-body">
+      <div class="honest-mark">
+        <h3>КАК ПРОВЕРИТЬ ТОВАР В «ЧЕСТНОМ ЗНАКЕ»</h3>
+        <p style="font-weight:bold; color:#7a5b00;">ПРОВЕРЯЙ — ПОКУПАЙ — БУДЬ УВЕРЕН!</p>
+      </div>
+
+      <h3>1. Установите приложение</h3>
+      <p>Скачайте официальное приложение «Честный ЗНАК» в App Store или Google Play. Бесплатно.</p>
+
+      <h3>2. Найдите код на товаре</h3>
+      <p>На упаковке ищите специальный Data Matrix код (похож на QR, но квадратный с плотным рисунком).</p>
+      <p>Обычно он есть на:</p>
+      <ul>
+        <li>лекарствах</li>
+        <li>одежде и обуви</li>
+        <li>молочной продукции</li>
+        <li>парфюмерии</li>
+        <li>воде и других товарах</li>
+      </ul>
+
+      <h3>3. Отсканируйте код</h3>
+      <ul>
+        <li>Откройте приложение</li>
+        <li>Нажмите «Сканировать»</li>
+        <li>Наведите камеру на код</li>
+      </ul>
+
+      <h3>4. Проверьте информацию</h3>
+      <p>После сканирования вы увидите:</p>
+      <ul>
+        <li>название товара</li>
+        <li>производителя</li>
+        <li>страну происхождения</li>
+        <li>срок годности (если есть)</li>
+        <li>статус кода (легальный или нет)</li>
+      </ul>
+
+      <h3>5. Обратите внимание на статус</h3>
+      <p><strong>✅ Всё в порядке, если:</strong></p>
+      <ul>
+        <li>товар найден в системе</li>
+        <li>данные совпадают с упаковкой</li>
+        <li>статус — «в обороте» или «реализован»</li>
+      </ul>
+
+      <p><strong>⚠️ Подозрительно, если:</strong></p>
+      <ul>
+        <li>товар не найден</li>
+        <li>данные не совпадают</li>
+        <li>код уже использован ранее</li>
+      </ul>
+
+      <h3>6. Сообщите о нарушении</h3>
+      <p>Если что-то не так:</p>
+      <ul>
+        <li>нажмите кнопку «Сообщить о нарушении» в приложении</li>
+        <li>отправьте жалобу прямо через него</li>
+      </ul>
+
+      <h3>💡 Полезные советы</h3>
+      <ul>
+        <li>Проверяйте товар ДО покупки</li>
+        <li>Особенно важно проверять дорогие товары и лекарства</li>
+        <li>Не покупайте товар без кода (если он должен быть)</li>
+        <li>Простая проверка — ваша защита от подделок и некачественного товара!</li>
+      </ul>
+
+      <p style="text-align:center; margin-top:20px; font-weight:bold; color:#7a5b00;">ЧЕСТНЫЙ ЗНАК — ВАША УВЕРЕННОСТЬ В КАЖДОЙ ПОКУПКЕ!</p>
+    </div>
+  </details>
+
+  <!-- 7. ФЗ-294 -->
+  <details class="doc">
+    <summary><span class="num">7</span> Федеральный закон № 294-ФЗ (защита прав ЮЛ и ИП при госконтроле)</summary>
+    <div class="doc-body">
+      <p>Полный текст документа загружается ниже:</p>
+      <div class="iframe-wrap">
+        <iframe src="doc-fz294.html" title="ФЗ-294"></iframe>
+      </div>
+    </div>
+  </details>
+
+  <!-- 8. СП 2.2.4285-26 -->
+  <details class="doc">
+    <summary><span class="num">8</span> Санитарные правила СП 2.2.4285-26 (условия труда)</summary>
+    <div class="doc-body">
+      <p>Полный текст документа загружается ниже:</p>
+      <div class="iframe-wrap">
+        <iframe src="doc-sp.html" title="СП 2.2.4285-26"></iframe>
+      </div>
+    </div>
+  </details>
+
+  <!-- 9. ПРАВИЛА ПРОДАЖИ -->
+  <details class="doc">
+    <summary><span class="num">9</span> Правила продажи товаров</summary>
+    <div class="doc-body">
+      <p>Полный текст документа загружается ниже:</p>
+      <div class="iframe-wrap">
+        <iframe src="doc-pravila.html" title="Правила продажи"></iframe>
+      </div>
+    </div>
+  </details>
+
+  <!-- 10. ИНСТРУКЦИЯ ЧС -->
+  <details class="doc">
+    <summary><span class="num">10</span> Инструкция по действиям при ЧС</summary>
+    <div class="doc-body">
+      <p>Полный текст документа загружается ниже:</p>
+      <div class="iframe-wrap">
+        <iframe src="doc-chs.html" title="Инструкция ЧС"></iframe>
+      </div>
+    </div>
+  </details>
+
+  <!-- 11. ФЗ-35 -->
+  <details class="doc">
+    <summary><span class="num">11</span> Федеральный закон № 35-ФЗ «О противодействии терроризму»</summary>
+    <div class="doc-body">
+      <p>Полный текст документа загружается ниже:</p>
+      <div class="iframe-wrap">
+        <iframe src="doc-fz35.html" title="ФЗ-35 О противодействии терроризму"></iframe>
+      </div>
+    </div>
+  </details>
+
+  <footer>
+    © ООО «Оренбургская мясоперерабатывающая компания» · Уголок потребителя · 2026
+  </footer>
+
+</div>
+</body>
+</html>
